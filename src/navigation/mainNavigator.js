@@ -8,10 +8,8 @@ const Stack = createNativeStackNavigator();
 function MainNavigator() {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator screenOptions={{ headerShown: false }}>
         <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="Zone" component={ZoneScreen} />
-        <Stack.Screen name="Bar" component={BarScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

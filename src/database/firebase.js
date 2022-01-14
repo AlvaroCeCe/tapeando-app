@@ -1,5 +1,5 @@
-import * as firebase from "firebase";
-import { Alert } from "react-native";
+import { initializeApp } from "firebase/app";
+import { getDatabase, ref, onValue, set } from "firebase/database";
 
 var firebaseConfig = {
   apiKey: "AIzaSyAbmovoqiTx73HBiJdDdkkULYzksu0DbZw",
@@ -13,9 +13,14 @@ var firebaseConfig = {
   measurementId: "G-VHKEM57W4T",
 };
 
-export default firebase;
-
 // Initialize Firebase
-export async function initialize() {
-  if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
+initializeApp(firebaseConfig);
+
+export const db = getDatabase();
+
+export function getData() {
+  const reference = ref(db, "ZONAS/");
+  onValue(reference, (snapshot) => {
+    console.log(snapshot.val());
+  });
 }
